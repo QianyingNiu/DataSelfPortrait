@@ -1,35 +1,37 @@
 
-////////////////////////圆形位置赋值
-let  ellipseX = 900;
-let  ellipseY = 500;
+////////////////////////矩形位置赋值
+let  rectX = 900;
+let  rectY = 500;
 
-////////////////////////圆形刷新变色
+////////////////////////矩形颜色赋值
 let fillR
 let fillG
 let fillB
 
-
-
+function preload(){
+  sixiwanzi = loadImage("images/sixiwanzi.jpg");
+  xi = loadImage("images/xi.png");
+  wanzi = loadImage("images/wanzi.png");
+}
 
 function setup(){
   createCanvas(windowWidth, windowHeight);
-////////////////////////圆形刷新变色
-  fillR = random(255);
-  fillG = random(255);
-  fillB = random(255);
-  background(40, 100, 30);
+////////////////////////矩形初色_山楂色
+  fillR = (192);
+  fillG = (50);
+  fillB = (50);
+  background(0, 0, 0);
 }
 
 
 
-
 function draw(){
-////////////////////////屏幕点击变色 分屏两色
-  // if(mouseIsPressed){
-  //   background(180, 49, 100);
-  // }else{
-  //   background(40, 100, 30);
-  // }
+////////////////////////屏幕点击分屏两色_黑色和肉色
+   //if(mouseIsPressed){
+     //background(251, 223, 218);
+   //}else{
+     //background(0, 0, 0);
+   //}
 
 ////////////////////////鼠标画笔
     //line(pmouseX, pmouseY, mouseX, mouseY);
@@ -47,59 +49,75 @@ function draw(){
 ////////////////////////分屏两边加元素
     //fill(255, 0 , 0);
     //ellipse(300, 600, 300, 300);
-////////////////////////圆形移动变色
-    ellipseX = 300;
-    ellipseY = 300;
+////////////////////////上矩形位置和下矩形位置
+    rectX = 100;
+    rectY = 100;
   } else{
     //background(30, 100, 190);
     //fill(20, 0 , 255);
     //ellipse(700, 300, 200, 200);
-    ellipseX = 900;
-    ellipseY = 500;
+    rectX = 30;
+    rectY = 30;
   }
 ////////////////////////圆形刷新变色
     fill(fillR, fillG, fillB);
-    ellipse(ellipseX, ellipseY, 100, 100);
+    rect(rectX, rectY, 420, 420);
 
 ////////////////////////接触到圆形边缘出现字体
     textSize(50);
-    if(dist(mouseX, mouseY, ellipseX, ellipseY) < 50 ){
-      text("Got the ellipse!!!", 200, 300);
+    if(dist(mouseX, mouseY, rectX, rectY) > 50 ){
+      text("FO(U)R FUN BALLS", 630, 80);
     }
-    ////////////////////////键盘点击变色(空格键)
-      strokeWeight(20);
+    ////////////////////////空格键出图片或出线条
+      strokeWeight(0);
       stroke(20, 120, 200);
       if(keyIsPressed == true){
-        line(0, 400, 800 , 600);
-
+        //line(0, 400, 800 , 600);
+        image(sixiwanzi, 60, 60, 420, 420);
       }
+
+      image(wanzi, 1000, 600, 74.08, 76.56);
+
+      image(xi, mouseX, mouseY, 28.25, 27);
+      print(mouseX);
+
 }
 
-
-
-
-////////////////////////圆形点击变色
+////////////////////////矩形点击变色
 function mouseReleased(){
-  fillR = random(255);
-  fillG = random(255);
-  fillB = random(255);
+  fillR = (250);
+  fillG = (223);
+  fillB = (219);
 
 }
 
 
 
-
-
-////////////////////////键盘点击变色(c大小写键)
+////////////////////////键盘字母键变色(a,b,c,d大小写键)
 function keyPressed(){
+  if(key == 'a' || key == 'A'){
+    fillR = (192);
+    fillG = (50);
+    fillB = (50);
+  }
+  if(key == 'b' || key == 'B'){
+    fillR = (71);
+    fillG = (184);
+    fillB = (132);
+  }
   if(key == 'c' || key == 'C'){
-    fillR = random(255);
-    fillG = random(255);
-    fillB = random(255);
+    fillR = (237);
+    fillG = (170);
+    fillB = (67);
+  }
+  if(key == 'd' || key == 'D'){
+    fillR = (239);
+    fillG = (135);
+    fillB = (153);
   }
 ////////////////////////键盘点击清空成背景(f大小写键)
-  if(key == 'f' || key == 'F'){
-    background(40, 100, 30);
+  if(key == 'e' || key == 'E'){
+    background(0, 0, 0);
   }
 ////////////////////////键盘点击保存(s大小写键)
   if(key == 's' || key == 'S'){
